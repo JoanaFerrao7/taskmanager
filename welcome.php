@@ -41,17 +41,25 @@
 			Delete
 			</td>
 			<?php foreach($tasks as $cl)
-			{?>
+				{?>
 			<tr> 
 			<td align=center><?php echo ($cl['name']) ?></td>
 			<td align=center><?php echo ($cl['description']) ?></td>
 			<td align=center><?php echo ($cl['created_at']) ?></td>
 	        <td align=center><?php echo ($cl['username']) ?></td>
 			<td align=center><?php echo ($cl['completed_at']) ?></td>
+			<?php
+			date_default_timezone_set('UTC');
+			$today = getdate();
+			if(is_null($cl['completed_at'])){
+			if((time()-(60*60*24)) < $today){
+				?>
 			<td><a href="alterar.php?id=<?=$cl['id_task']?>">&#8634;</a></td>
 			<td><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
 			</tr>
-			<?php } ?>
+			<?php }	else{echo "passou mais q 1 dia";}
+				}else{}
+				} ?>
 		</table>
 		<br>
 		<a href="registar.html"> <input type="button" name="" value="Create Task"></a>
