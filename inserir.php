@@ -1,39 +1,44 @@
-
+<?php
+ session_start();
+?>
 <html>
 	<head>
-		<title>Inserir registo na BD</title>
+		<title>Task Creator</title>
+		<link rel="stylesheet" type="text/css" href="css/style_index.css">
+		<link rel="shortcut icon" href="imagens/favicon.ico" />
 		<meta charset="UTF-8">
 	</head>
 	
 	<body>
-		<h2>Inserir registos da DB</h2>
 		<?php
 			include ('functions.php');
 			session_start();
 			
-			//Captar os dados recebidos do formulário com o método Post
-			$marca=$_POST['marca'];
-			$modelo=$_POST['modelo'];
-			$ano=$_POST['ano'];
-			$cor=$_POST['cor'];
-			$kms=$_POST['kms'];
-			$potencia=$_POST['potencia'];
-			$combustivel=$_POST['combustivel'];
+			$timezone = date_default_timezone_get();
+			$username= $login_session;
 			
-			/*Avalia se alguma das variáveis contém um valor nulo ou string vazia */
-			if(!$marca || !$modelo || !$ano || !$cor || !$kms || !$potencia || !$combustivel )
-			{
-				echo ' Campos em falta. Volte atrás e tente de novo.';
-				exit;
-			}
-			echo 'Dados recebidos:<br/>';
-		
-			//Inserir os dados na tabelta do registo
-			$insere="INSERT INTO viaturas (`marca`,`modelo`,`ano`,`cor`,`kms`,`potencia`,`combustivel`) VALUES('".$marca."','".$modelo."','".$ano."','".$cor."','".$kms."','".$potencia."','".$combustivel."')";
+			//Captar os dados recebidos do formulário com o método Post
+			$name=$_POST['name'];
+			$description=$_POST['description'];
+            //Inserir os dados na tabela do registo
+			$insere="INSERT INTO tasks (`name`,`description`,`created_at`,`username`) VALUES('".$name."','".$description."','".$timezone."','".$username."')";
 			$resultado=DBExecute($insere);
-			if ($resultado == 1) echo '<p>Dados inseridos<br/>';
-			else echo '<p>Dados não inseridos <br/>';
+			
+			if ($resultado == 1) 
+				echo "
+                <script type='text/javascript'>
+                    alert('Task Created!');
+                    window.location = 'welcome.php';
+                </script>";
+			else 
+				echo "
+                <script type='text/javascript'>
+                    alert('Não foi inserido com sucesso, campos em falta!');
+                    window.location = 'registar.html';
+                </script>";
+            
+        
+        echo "<p id='mensagem'>".$mensagem."</p>";
 		?>
-		<p><a href="welcome.php">Voltar</a></p>
 	</body>
 </html>	
