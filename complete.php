@@ -4,7 +4,7 @@
 	session_start();
 	
 	//captar os dados recebidos do formulário com o método POST
-    $id_task=$_POST['id'];
+    $id_task=$_POST['id_task'];
 	
 	date_default_timezone_set('UTC');
 	$date = date("Y-m-d H:i:s");
