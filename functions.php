@@ -21,7 +21,7 @@ function DBExecute($sql)
 }
 
 function DBRead($username)
-{	$sql="SELECT * FROM tasks WHERE username='".$username."'";
+{	$sql="SELECT * FROM tasks WHERE username='".$username."' ORDER BY completed_at";
 	$result=DBExecute($sql);
 	
 	while($res=mysqli_fetch_assoc($result))
