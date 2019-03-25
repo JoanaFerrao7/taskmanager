@@ -37,6 +37,16 @@ function DBRead2($username)
 	$data[] = $row_user;
 	return $data;
 }
+function DBRead3($id_task)
+{	$sql="SELECT * FROM tasks WHERE id_task='".$id_task."'";
+	$result=DBExecute($sql);
+	
+	while($res=mysqli_fetch_assoc($result))
+	{
+		$data[]=$res;
+	}
+	return $data;
+}
 
 function DBDelete($id_task)
 {

@@ -1,6 +1,3 @@
-<?php
- session_start();
-?>
 <html>
 	<head>
 		<title>Task Creator</title>
@@ -14,14 +11,15 @@
 			include ('functions.php');
 			session_start();
 			
-			$timezone = date_default_timezone_get();
-			$username= $login_session;
+			date_default_timezone_set('UTC');
+			$date = date("Y-m-d H:i:s");
 			
 			//Captar os dados recebidos do formulário com o método Post
 			$name=$_POST['name'];
 			$description=$_POST['description'];
+			$username=$_POST['username'];
             //Inserir os dados na tabela do registo
-			$insere="INSERT INTO tasks (`name`,`description`,`created_at`,`username`) VALUES('".$name."','".$description."','".$timezone."','".$username."')";
+			$insere="INSERT INTO tasks (`name`,`description`,`created_at`,`username`) VALUES('".$name."','".$description."','".$date."','".$username."')";
 			$resultado=DBExecute($insere);
 			
 			if ($resultado == 1) 
@@ -33,8 +31,8 @@
 			else 
 				echo "
                 <script type='text/javascript'>
-                    alert('Não foi inserido com sucesso, campos em falta!');
-                    window.location = 'registar.html';
+                    alert('Error. Please complete all the boxes!');
+                    window.location = 'registar.php';
                 </script>";
             
         

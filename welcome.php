@@ -69,7 +69,7 @@
             } 
 			?>
 		<br>
-		<a href="registar.html"> <input type="button" name="" value="Create Task"></a>
+		<a href="registar.php"> <input type="button" name="" value="Create Task"></a>
 	</body>
 	
 </html>
