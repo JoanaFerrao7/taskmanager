@@ -4,16 +4,12 @@
 	session_start();
 	
 	//captar os dados recebidos do formulário com o método POST
-	$idviatura=$_POST['idviatura'];
-	$marca=$_POST['marca'];
-	$modelo=$_POST['modelo'];
-	$ano=$_POST['ano'];
-	$cor=$_POST['cor'];
-	$kms=$_POST['kms'];
-	$potencia=$_POST['potencia'];
-	$combustivel=$_POST['combustivel'];
 	
-	$altera="UPDATE viaturas SET `marca`='$marca',`modelo`='$modelo',`ano`='$ano',`cor`='$cor',`kms`='$kms',`potencia`='$potencia',`combustivel`='$combustivel' WHERE `idviatura`=$idviatura;";
+	$id_task=$_POST['id_task'];
+	$name=$_POST['name'];
+	$description=$_POST['description'];
+	
+	$altera="UPDATE tasks SET `name`='$name',`description`='$description' WHERE `id_task`=$id_task;";
 	
 	$resultado =DBExecute($altera);
 	
