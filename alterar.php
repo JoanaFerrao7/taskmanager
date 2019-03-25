@@ -15,6 +15,13 @@
 <head>
 <title>Edit Task </title>
 <meta charset="ISO-8859-1">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+body{
+    font-family: 'Roboto', sans-serif;
+	color:white;
+}
+</style>
 </head>
 <body>
 	<h2>Edit Task</h2>
