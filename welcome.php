@@ -44,7 +44,7 @@
 			<td align=center>".($cl['completed_at'])."</td>";
 			?>
             <td align=center><a href="alterar.php?id=<?=$cl['id_task']?>">&#8634;</a></td>
-            <td align=center><a href="alterar.php?id=<?=$cl['id_task']?>">&#10003;</a></td>
+            <td align=center><a href="complete.php?id=<?=$cl['id_task']?>">&#10003;</a></td>
 			<td align=center><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
             </tr>
 			<?php
@@ -64,7 +64,7 @@
                 <td align=center>".($cl['username'])."</td>
                 <td align=center>".($cl['completed_at'])."</td>  
                 </tr>             
-                </table>";
+                </table><br>";
             }
             } 
 			?>
