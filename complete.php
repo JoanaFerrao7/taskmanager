@@ -8,7 +8,6 @@
 	
 	date_default_timezone_set('UTC');
 	$date = date("Y-m-d H:i:s");
-	
 	$altera="UPDATE tasks SET `completed_at`='$date' WHERE `id_task`='$id_task'";
 	
 	$resultado =DBExecute($altera);

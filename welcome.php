@@ -35,56 +35,74 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 		<?php $tasks = DBRead($login_session)?>
         <h1> List of tasks</h1>
         <?php
-        			foreach($tasks as $cl){
-        date_default_timezone_set('UTC');
-        $date = date('m/d/Y h:i:s a', time());
-        $dayoftask = $cl['completed_at'];
-        
-        if($dayoftask < $date){
-        echo "
-		<table width=100% border=1>
-			<tr> 
-			<td align=center>Name</td>
-            <td align=center>Description</td>
-            <td align=center>Create At</td>
-			<td align=center>Created By</td>
-			<td align=center>Completed At</td>
-            <td align=center>Edit</td>
-            <td align=center>Complete</td>
-			<td align=center>Delete</td> 
+
+            $complete=[];
+            $incomplete=[];
+
+            foreach( $tasks as $cl ){
+
+                date_default_timezone_set('UTC');
+                $date = date('m/d/Y h:i:s a', time());
+                $dayoftask = $cl['completed_at'];
+
+                if( $dayoftask < $date ){
+
+                    $complete[]="
+                        <tr>
+                            <td>{$cl['name']}</td>
+                            <td>{$cl['description']}</td>
+                            <td>{$cl['created_at']}</td>
+                            <td>{$cl['username']}</td>
+                            <td><form action='complete.php' method='POST'><input type='submit' value='complete'></form>
+                            <td><a href='alterar.php?id={$cl['id_task']}'>&#8634;</a></td>
+                            <td><a href='eliminar.php?id={$cl['id_task']}'' onclick='return confirm('Tem a certeza que pretende eliminar o registo?')''>x</a></td>
+                        </tr>";
+                } else {
+
+                    $incomplete[]="
+                        <tr>
+                            <td>{$cl['name']}</td>
+                            <td>{$cl['description']}</td>
+                            <td>{$cl['created_at']}</td>
+                            <td>{$cl['username']}</td>
+                            <td>{$cl['completed_at']}</td>
+                        </tr>";
+                }
+            }
+        ?>
+
+
+        <!-- Completed tasks -->
+        <table id='complete' width='100%' border=1>
+            <tr> 
+                <td align=center>Name</td>
+                <td align=center>Description</td>
+                <td align=center>Create At</td>
+                <td align=center>Created By</td>
+                <td align=center>Complete</td>
+                <td align=center>Edit</td>
+                <td align=center>Delete</td> 
             </tr>
-            <tr>
-			<td align=center>".($cl['name'])."</td>
-			<td align=center>".($cl['description'])."</td>
-			<td align=center>".($cl['created_at'])."</td>
-	        <td align=center>".($cl['username'])."</td>
-			<td align=center>".($cl['completed_at'])."</td>";
-			?>
-            <td align=center><a href="alterar.php?id=<?=$cl['id_task']?>">&#8634;</a></td>
-            <td align=center><a href="complete.php?id=<?=$cl['id_task']?>">&#10003;</a></td>
-			<td align=center><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
-            </tr>
-			<?php
-            echo"</table><br>";}else{
-                echo"<table width=100% border=1>
-                <tr> 
+            <?php
+                echo implode( PHP_EOL, $complete );
+            ?>
+        </table>
+
+
+
+        <!-- uncompleted tasks -->
+        <table id='incomplete' width='100%' border=1>
+            <tr> 
                 <td align=center>Name</td>
                 <td align=center>Description</td>
                 <td align=center>Create At</td>
                 <td align=center>Created By</td>
                 <td align=center>Completed At</td>
-                </tr>
-                <tr>
-                <td align=center>".($cl['name'])."</td>
-                <td align=center>".($cl['description'])."</td>
-                <td align=center>".($cl['created_at'])."</td>
-                <td align=center>".($cl['username'])."</td>
-                <td align=center>".($cl['completed_at'])."</td>  
-                </tr>             
-                </table><br>";
-            }
-            } 
-			?>
+            </tr>
+            <?php
+                echo implode( PHP_EOL, $incomplete );
+            ?>
+        </table>
 		<br>
 		<a href="registar.php"> <input type="button" name="" value="Create Task"></a>
 	</body>
