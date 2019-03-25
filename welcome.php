@@ -60,7 +60,7 @@
 			<td><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
 			</tr>
 			<?php
-			}	 else{---------------------------------------------}}} 
+			}	 else{}}} 
 			?>
 		</table>
 		<br>
