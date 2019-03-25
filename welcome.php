@@ -11,8 +11,9 @@
 		
 <style>
 body{
+    background-color:#9c9cad;
     font-family: 'Roboto', sans-serif;
-	color:white;
+	color:#0d0d26;
 }
 
 table {
@@ -20,26 +21,16 @@ table {
   width: 100%;
 }
 th, td {
+    background-color:#0d0d26;
+    color:white;
   text-align: left;
   padding: 8px;
 }
-tr:nth-child(even) {background-color: #f2f2f2;}
-.btn {
-  -webkit-border-radius: 60;
-  -moz-border-radius: 60;
-  border-radius: 60px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #60a4d1;
-  padding: 12px 20px 12px 20px;
-  text-decoration: none;
+a{
+   text-decoration:none;
+   color:white;
 }
 
-.btn:hover {
-  background: #4a84a8;
-  text-decoration: none;
-}
 </style>
 
 
@@ -118,7 +109,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
             ?>
         </table>
 		<br>
-		<a href="registar.php"> <input type="button" name="" value="Create Task" class="btn"></a>
+		<a href="registar.php"> <input type="button" name="" value="Create Task"></a>
 	</body>
 	
 </html>

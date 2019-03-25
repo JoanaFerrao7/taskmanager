@@ -18,8 +18,9 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <style>
 body{
+    background-color:#9c9cad;
     font-family: 'Roboto', sans-serif;
-	color:white;
+	color:#0d0d26;
 }
 </style>
 </head>

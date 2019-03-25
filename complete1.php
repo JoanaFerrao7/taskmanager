@@ -15,6 +15,13 @@
 <head>
 <title>Edit Task </title>
 <meta charset="ISO-8859-1">
+<style>
+body{
+    background-color:#9c9cad;
+    font-family: 'Roboto', sans-serif;
+	color:#0d0d26;
+}
+</style>
 </head>
 <body>
 	<h2>Edit Task</h2>
