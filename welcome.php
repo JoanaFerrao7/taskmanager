@@ -53,7 +53,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
                             <td>{$cl['description']}</td>
                             <td>{$cl['created_at']}</td>
                             <td>{$cl['username']}</td>
-                            <td><form action='complete.php' method='POST'><input type='submit' value='complete'></form>
+                            <td><a href='complete1.php?id={$cl['id_task']}'>&#10003;</a></td>
                             <td><a href='alterar.php?id={$cl['id_task']}'>&#8634;</a></td>
                             <td><a href='eliminar.php?id={$cl['id_task']}'' onclick='return confirm('Tem a certeza que pretende eliminar o registo?')''>x</a></td>
                         </tr>";
