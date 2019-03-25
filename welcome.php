@@ -32,17 +32,20 @@
             <td align=center>Create At</td>
 			<td align=center>Created By</td>
 			<td align=center>Completed At</td>
-			<td align=center>Edit</td>
+            <td align=center>Edit</td>
+            <td align=center>Complete</td>
 			<td align=center>Delete</td> 
-			<tr>
+            </tr>
+            <tr>
 			<td align=center>".($cl['name'])."</td>
 			<td align=center>".($cl['description'])."</td>
 			<td align=center>".($cl['created_at'])."</td>
 	        <td align=center>".($cl['username'])."</td>
 			<td align=center>".($cl['completed_at'])."</td>";
 			?>
-			<td><a href="alterar.php?id=<?=$cl['id_task']?>">&#8634;</a></td>
-			<td><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
+            <td align=center><a href="alterar.php?id=<?=$cl['id_task']?>">&#8634;</a></td>
+            <td align=center><a href="alterar.php?id=<?=$cl['id_task']?>">&#10003;</a></td>
+			<td align=center><a href="eliminar.php?id=<?=$cl['id_task']?>" onclick="return confirm('Tem a certeza que pretende eliminar o registo?')">x</a></td>
             </tr>
 			<?php
             echo"</table><br>";}else{
@@ -53,14 +56,14 @@
                 <td align=center>Create At</td>
                 <td align=center>Created By</td>
                 <td align=center>Completed At</td>
-                <td align=center>Edit</td>
-                <td align=center>Delete</td> 
+                </tr>
                 <tr>
                 <td align=center>".($cl['name'])."</td>
                 <td align=center>".($cl['description'])."</td>
                 <td align=center>".($cl['created_at'])."</td>
                 <td align=center>".($cl['username'])."</td>
-                <td align=center>".($cl['completed_at'])."</td>                
+                <td align=center>".($cl['completed_at'])."</td>  
+                </tr>             
                 </table>";
             }
             } 
